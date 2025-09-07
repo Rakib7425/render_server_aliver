@@ -6,6 +6,7 @@ const Render_live_document_editor_intigly_assignment_backend: React.FC = () => {
       const response = await fetch(
         "https://live-document-editor-intigly-assignment.onrender.com/health"
       );
+
       const data = await response.json();
       if (data.ok) {
         console.log("API is healthy");
@@ -17,15 +18,35 @@ const Render_live_document_editor_intigly_assignment_backend: React.FC = () => {
     }
   }, []);
 
+  // Frontend appServer aliver
+  const callAppServer = useCallback(async () => {
+    try {
+      const response = await fetch(
+        "https://live-document-editor-intigly-assignment-07xv.onrender.com/login"
+      );
+
+      const data = await response.text();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
   // call the health api here
   useEffect(() => {
     const timerId = setInterval(() => {
       fetchData();
-    }, 14 * 60 * 1000); // 14 minutes in milliseconds
+      callAppServer();
+    }, 14.2 * 60 * 1000); // 14 minutes in milliseconds
 
     return () => clearInterval(timerId); // cleanup on unmount
-  }, [fetchData]);
-  return <>1. live_document_editor_intigly_assignment_backend</>;
+  }, [callAppServer, fetchData]);
+  return (
+    <main>
+      <p>1. live_document_editor_intigly_assignment_backend</p>
+      <p>2. live_document_editor_intigly_assignment_frontend</p>
+    </main>
+  );
 };
 
 export default Render_live_document_editor_intigly_assignment_backend;
