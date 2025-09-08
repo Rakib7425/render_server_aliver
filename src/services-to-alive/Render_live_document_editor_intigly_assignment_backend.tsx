@@ -50,7 +50,7 @@ const Render_live_document_editor_intigly_assignment_backend: React.FC = () => {
     const timerId = setInterval(() => {
       fetchData();
       callAppServer();
-    }, 14.2 * 60 * 1000); // 14 minutes in milliseconds
+    }, 14.5 * 60 * 1000); // 14 minutes 30 seconds
 
     return () => clearInterval(timerId); // cleanup on unmount
   }, [callAppServer, fetchData]);
