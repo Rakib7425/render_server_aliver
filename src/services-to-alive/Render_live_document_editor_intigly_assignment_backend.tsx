@@ -9,9 +9,13 @@ const Render_live_document_editor_intigly_assignment_backend: React.FC = () => {
 
       const data = await response.json();
       if (data.ok) {
-        console.log("API is healthy");
+        console.log(
+          "https://live-document-editor-intigly-assignment.onrender.com/health API is healthy"
+        );
       } else {
-        console.log("API is not healthy");
+        console.log(
+          "https://live-document-editor-intigly-assignment.onrender.com/health API is not healthy"
+        );
       }
     } catch (error) {
       console.error(error);
@@ -22,11 +26,20 @@ const Render_live_document_editor_intigly_assignment_backend: React.FC = () => {
   const callAppServer = useCallback(async () => {
     try {
       const response = await fetch(
-        "https://live-document-editor-intigly-assignment-07xv.onrender.com/login"
+        "https://live-document-editor-intigly-assignment-07xv.onrender.com/api/health"
       );
 
-      const data = await response.text();
-      console.log(data);
+      const data = await response.json();
+
+      if (data.ok) {
+        console.log(
+          "https://live-document-editor-intigly-assignment-07xv.onrender.com/api/health API is healthy"
+        );
+      } else {
+        console.log(
+          "https://live-document-editor-intigly-assignment-07xv.onrender.com/api/health API is not healthy"
+        );
+      }
     } catch (error) {
       console.error(error);
     }
